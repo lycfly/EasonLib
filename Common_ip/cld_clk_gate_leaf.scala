@@ -18,7 +18,7 @@ class cld_clk_gate_leaf() extends BlackBox {
   noIoPrefix()
   // Map the current clock domain to the io.clk pin
   mapClockDomain(clock = io.clk_i)
-  addRTLPath("verilog_ips/common_ip/cld_clk_gate_leaf.v")
+  addRTLPath("EasonLib/verilog_ips/common_ip/cld_clk_gate_leaf.v")
 }
 
 object cld_clk_gate_leaf_inst {
