@@ -19,7 +19,7 @@ class PipelineMemBus2Ahblite(ahb3Config: AhbLite3Config, pipelinedMemoryBusConfi
 
   val io = new Bundle {
     val pipelinedMemoryBus = slave(PipelinedMemoryBus(pipelinedMemoryBusConfig))
-    val ahb = master(AhbLite3Master(ahb3Config))
+    val ahb = master(AhbLite3(ahb3Config))
   }
   noIoPrefix()
   val curr_state, next_state = AhbStateEnum()
@@ -76,6 +76,8 @@ class PipelineMemBus2Ahblite(ahb3Config: AhbLite3Config, pipelinedMemoryBusConfi
   io.ahb.HPROT := 1
   io.ahb.HWDATA := wdata_buf
   io.ahb.HMASTLOCK := False
+  io.ahb.HSEL := True
+  io.ahb.HREADY := io.ahb.HREADYOUT
 
   io.pipelinedMemoryBus.cmd.ready := (ahb_trans_flying & ahb_trans_finish_one) || // just finish one trans
     (curr_state =/= AhbStateEnum.IDLE) ||  // no trans
