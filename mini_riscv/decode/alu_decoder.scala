@@ -1,18 +1,12 @@
 package EasonLib.mini_riscv.decode
 
-import EasonLib.mini_riscv.{BIT_MANIPULATION, IMM, INST_FIELD, RVIMCA}
 import EasonLib.mini_riscv.regfile.regfile_dual_rd_port
-import spinal.sim._
+import EasonLib.mini_riscv.{BIT_MANIPULATION, IMM, INST_FIELD, RVIMCA}
 import spinal.core._
-import spinal.core.sim._
 import spinal.lib._
 
-import scala.util.Random
-import scala.language.postfixOps
-import mini_riscv._
-
 import scala.collection.mutable
-import scala.collection.mutable.ArrayBuffer
+import scala.language.postfixOps
 
 object ALUOPs extends SpinalEnum {
   val IDLE, ADD, SUB, AND, OR, XOR, SLT, SLTU, SHL, SHR, MULL, MULH, DIV, REM, NPC, AUIPC, RA = newElement()
