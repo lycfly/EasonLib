@@ -1,6 +1,5 @@
 package EasonLib.mini_riscv.regfile
 
-import breeze.stats.distributions.WeibullDistribution
 import spinal.sim._
 import spinal.core._
 import spinal.core.sim._

@@ -18,7 +18,7 @@ class cld_clk_gate_leaf() extends BlackBox {
   noIoPrefix()
   // Map the current clock domain to the io.clk pin
   mapClockDomain(clock = io.clk_i)
-  addRTLPath("verilog_ips/common_ip/cld_clk_gate_leaf.v")
+  addRTLPath("EasonLib/verilog_ips/common_ip/cld_clk_gate_leaf.v")
 }
 
 object cld_clk_gate_leaf_inst {
@@ -33,7 +33,7 @@ object cld_clk_gate_leaf_inst {
       inlineConditionalExpression = true,
       enumPrefixEnable = false,
       anonymSignalPrefix = "tmp",
-      targetDirectory = "rtl")
+      targetDirectory = "rtl_gen")
       .addStandardMemBlackboxing(blackboxAll)
       .generate(new cld_clk_gate_leaf())
   }.printPruned()
