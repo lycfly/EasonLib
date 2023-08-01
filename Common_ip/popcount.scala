@@ -1,5 +1,6 @@
 package EasonLib.Common_ip
 
+import spinal.core
 import spinal.sim._
 import spinal.core._
 import spinal.core.sim._
@@ -8,7 +9,19 @@ import spinal.lib._
 import scala.collection.mutable.ArrayBuffer
 import scala.util.Random
 import scala.language.postfixOps
-
+object popcount{
+  def apply(Name: String = "", WIDTH: Int, din_vld: Bool, data_in: Bits): UInt = {
+    val popc = new popcount(WIDTH)
+    if (Name.isEmpty) {
+      popc.setName(data_in.getName()+"_popc")
+    }
+    else
+      popc.setName(Name)
+    popc.io.din_vld := din_vld
+    popc.io.data_in := data_in
+    popc.io.cnt_out
+  }
+}
 class popcount(WIDTH: Int = 32) extends Component {
   val WIDTH_LOG2 = log2Up(WIDTH)
   val io = new Bundle {
