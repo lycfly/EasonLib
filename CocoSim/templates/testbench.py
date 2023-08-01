@@ -32,6 +32,9 @@ async def tb(dut):
     np.random.seed(2023)
     
     # Drivers
+    {% for item in inputs %}
+    {{item}}.value = 0
+    {% endfor %}
     # cocotb.start_soon(spram_driver(dut, "ram", ramblock, dut.mem_rd, dut.mem_wr, dut.mem_addr, dut.mem_wdata,dut.mem_rdata))
 
     # Monitors
