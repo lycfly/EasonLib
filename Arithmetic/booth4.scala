@@ -3,6 +3,7 @@ package EasonLib.Arithmetic
 import EasonLib.DesignCompiler.{DesignCompilerFlow, DesignCompiler_config}
 import spinal.core._
 import spinal.core.sim._
+import spinal.lib._
 
 import scala.language.postfixOps
 
