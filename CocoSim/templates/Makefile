@@ -3,8 +3,8 @@ TOPLEVEL_LANG = verilog
 VERILOG_SOURCES = {{VPATH}}
 
 TOPLEVEL = {{VTOP}}
-MODULE = tb
-EXTRA_ARGS += --trace-fst --trace-structs --Wno-WIDTH
+MODULE = testbench
+EXTRA_ARGS += --trace-fst --trace-structs --Wno-WIDTH -Wno-CMPCONST
 # EXTRA_ARGS += -full64 -LDFLAGS -Wl,--no-as-needed
 
 include $(shell cocotb-config --makefiles)/Makefile.sim

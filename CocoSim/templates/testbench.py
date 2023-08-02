@@ -5,7 +5,8 @@ import numpy as np
 from cocotb.clock import Clock
 from cocotb.triggers import FallingEdge, RisingEdge, Timer, Edge
 import sys
-from templates.common_drivers import spram_driver,sprom_driver
+sys.path.append("{{COM_DRIV_PATH}}")
+from common_drivers import spram_driver,sprom_driver
 
 CLK_NS = 1
 
@@ -33,12 +34,12 @@ async def tb(dut):
     
     # Drivers
     {% for item in inputs %}
-    {{item}}.value = 0
+    dut.{{item}}.value = 0
     {% endfor %}
     # cocotb.start_soon(spram_driver(dut, "ram", ramblock, dut.mem_rd, dut.mem_wr, dut.mem_addr, dut.mem_wdata,dut.mem_rdata))
 
     # Monitors
-    cocotb.start_soon()
+    # cocotb.start_soon()
 
 
     await RisingEdge(dut.resetn)
