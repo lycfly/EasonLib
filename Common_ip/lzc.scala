@@ -52,15 +52,15 @@ class lzc(WIDTH: Int = 32) extends Component {
   data_s := 0
   when(io.mode) {
     when(io.lead) { // leading 1
-      data_s := ~datain_reverse
+      data_s := datain_reverse
     }.elsewhen(io.trail) { // trailing 1
-      data_s := ~io.data_in
+      data_s := io.data_in
     }
   }.otherwise {
     when(io.lead) { // leading 0
-      data_s := datain_reverse
+      data_s := ~datain_reverse
     }.elsewhen(io.trail) { // trailing 0
-      data_s := io.data_in
+      data_s := ~io.data_in
     }
   }
 
@@ -101,7 +101,15 @@ class lzc(WIDTH: Int = 32) extends Component {
 
   val empty = (io.lead | io.trail) ? ~data_s.orR | False
 
-  io.cnt_out := empty ? U(WIDTH) | stage_index(WIDTH_LOG2)(0)
+  val out_remap = UInt (log2Up(WIDTH) bits)
+  out_remap := 0
+  when(io.lead){
+    out_remap := U(WIDTH-1) - stage_index(WIDTH_LOG2)(0)
+  }.elsewhen(io.trail){
+    out_remap := stage_index(WIDTH_LOG2)(0)
+  }
+
+  io.cnt_out := (io.lead & empty) ? U(WIDTH) | out_remap.resized
 }
 
 object lzc_inst {

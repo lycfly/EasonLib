@@ -42,7 +42,6 @@ async def tb(dut):
     # cocotb.start_soon()
 
 
-    await RisingEdge(dut.resetn)
     await Timer(10, units="ns")
     await RisingEdge(dut.clk)
     await RisingEdge(dut.clk)

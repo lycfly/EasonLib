@@ -116,7 +116,7 @@ class CocoTestFlow[T <: Component](
         enumPrefixEnable = false,
         anonymSignalPrefix = "tmp",
         targetDirectory = COCO_PATH(0) + "/rtl").generate(design)
-
+    doCmd("chmod 755 run.sh", COCO_PATH(0))
     doCmd("sh run.sh",COCO_PATH(0))
   }
 
