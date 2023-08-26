@@ -1,6 +1,5 @@
 package EasonLib.mini_riscv
 
-import EasonLib.mini_riscv.fetch.{fetch, fetch2iram_if}
 import EasonLib.mini_riscv.lsu.lsu2mem_if
 import spinal.sim._
 import spinal.core._

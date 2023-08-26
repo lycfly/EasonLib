@@ -9,7 +9,7 @@ import scala.language.postfixOps
 
 object dff {
   /** DFF with enable and clr */
-  def apply[T<:Data](width: Int)(d: T, q: T, en: Bool, clr: Bool) {
+  def apply[T<:Data](width: Int)(d: T, q: T, en: Bool, clr: Bool): Component = {
     val dff = new dff_ec(width)
     dff.io.d := d.asBits
     dff.io.ena := en
@@ -18,7 +18,7 @@ object dff {
     dff
   }
   /** DFF with enable */
-  def noclr[T<:Data](width: Int)(d: T, q: T, en: Bool) {
+  def noclr[T<:Data](width: Int)(d: T, q: T, en: Bool): Component ={
     val dff = new dff_e(width)
     dff.io.d := d.asBits
     dff.io.ena := en
@@ -27,7 +27,7 @@ object dff {
   }
 
   /** DFF with enable and clr, with specified init value*/
-  def withInit[T<:Data](width: Int,initValue: Int)(d: T, q: T, en: Bool, clr: Bool) {
+  def withInit[T<:Data](width: Int,initValue: Int)(d: T, q: T, en: Bool, clr: Bool): Component = {
     val dff = new dff_ec_with_init(width,initValue)
     dff.io.d := d.asBits
     dff.io.ena := en
