@@ -34,13 +34,19 @@ object OlderCompFunc extends CompareOpFunction{ // for RobId compare
   }
 }
 object CompareBalancedTree {
-  def apply(Name: String = "", op: CompareOpFunction, use_valid:Boolean, dataIn: Vec[UInt]) = {
+  def apply(Name: String = "", op: CompareOpFunction, use_valid:Boolean, dataIn: Vec[UInt], validIn: Vec[Bool]): Vec[Data] = {
     val findMaxOrMin_unit = new CompareBalancedTree(op.comp,use_valid, WIDTH = dataIn(0).getWidth, NUM = dataIn.length)
     if (Name.isEmpty) {}
     else
       findMaxOrMin_unit.setName(Name)
     findMaxOrMin_unit.io.data_in := dataIn
-    (findMaxOrMin_unit.io.find_out, findMaxOrMin_unit.io.index_out)
+    if(use_valid) {
+      findMaxOrMin_unit.io.valid_in := validIn
+      Vec(findMaxOrMin_unit.io.find_out, findMaxOrMin_unit.io.index_out, findMaxOrMin_unit.io.all_invalid)
+    }
+    else{
+      Vec(findMaxOrMin_unit.io.find_out, findMaxOrMin_unit.io.index_out)
+    }
   }
 }
 
