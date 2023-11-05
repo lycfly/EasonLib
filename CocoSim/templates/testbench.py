@@ -6,7 +6,8 @@ from cocotb.clock import Clock
 from cocotb.triggers import FallingEdge, RisingEdge, Timer, Edge
 import sys
 sys.path.append("{{COM_DRIV_PATH}}")
-from common_drivers import spram_driver,sprom_driver
+from common_drivers import *
+from Binary import *
 
 CLK_NS = 1
 
