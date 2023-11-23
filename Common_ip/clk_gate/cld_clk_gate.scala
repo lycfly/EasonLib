@@ -1,10 +1,7 @@
-package EasonLib.Common_ip
+package EasonLib.Common_ip.clk_gate
 
-import spinal.sim._
 import spinal.core._
-import spinal.core.sim._
-import spinal.lib._
-import scala.util.Random
+
 import scala.language.postfixOps
 
 class cld_clk_gate() extends BlackBox {
@@ -22,10 +19,9 @@ class cld_clk_gate() extends BlackBox {
   }
   noIoPrefix()
   // Map the current clock domain to the io.clk pin
-  mapClockDomain(clock = io.clk_i)
-  addRTLPath("verilog_ips/common_ip/cld_clk_gate.v")
-  addRTLPath("verilog_ips/common_ip/cld_clk_gate_leaf.v")
-
+ // mapClockDomain(clock = io.clk_i)
+  addRTLPath("src/main/scala/EasonLib/verilog_ips/common_ip/cld_clk_gate.v")
+  addRTLPath("src/main/scala/EasonLib/verilog_ips/common_ip/cld_clk_gate_leaf.v")
 
 
 }

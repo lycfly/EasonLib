@@ -5,7 +5,7 @@ import spinal.core._
 
 import scala.language.postfixOps
 
-class SignMultiplier (SIZEINA: Int, SIZEINB:Int, withOutReg:Boolean = true) extends Component {
+class SignMultiplier (SIZEINA: Int, SIZEINB:Int, withInReg: Boolean = true, withOutReg:Boolean = true) extends Component {
   val io = new Bundle {
     val dinA = in SInt (SIZEINA bits)
     val dinB = in SInt (SIZEINB bits)
@@ -18,6 +18,7 @@ class SignMultiplier (SIZEINA: Int, SIZEINB:Int, withOutReg:Boolean = true) exte
   noIoPrefix()
 
   val Result = SInt(SIZEINB + SIZEINA bits)
+  val din_vld = Bool()
   val dout_vld_reg = Bool()
 
   if(withOutReg){
@@ -25,12 +26,29 @@ class SignMultiplier (SIZEINA: Int, SIZEINB:Int, withOutReg:Boolean = true) exte
     dout_vld_reg.setAsReg().init(False)
   }
 
+  val dinA_reg = SInt (SIZEINA bits)
+  val dinB_reg = SInt (SIZEINA bits)
+  if(withInReg){
+    dinA_reg.setAsReg().init(0)
+    dinB_reg.setAsReg().init(0)
+    when(io.din_vld){
+      dinA_reg := io.dinA
+      dinB_reg := io.dinB
+    }
+    din_vld := RegNext(io.din_vld, False)
+  }
+  else{
+    dinA_reg := io.dinA
+    dinB_reg := io.dinB
+    din_vld := io.din_vld
+  }
+
   Result.clearAll()
-  when(io.din_vld){
-    Result := io.dinA * io.dinB
+  when(din_vld){
+    Result := dinA_reg * dinB_reg
   }
   dout_vld_reg.clear()
-  when(io.din_vld){
+  when(din_vld){
     dout_vld_reg := True
   }.otherwise{
     dout_vld_reg := False
