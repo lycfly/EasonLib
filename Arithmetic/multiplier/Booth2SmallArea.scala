@@ -1,8 +1,8 @@
-package EasonLib.Arithmetic
-
+package EasonLib.Arithmetic.multiplier
 
 import spinal.core._
 import spinal.core.sim._
+
 import scala.language.postfixOps
 
 class Booth2SmallArea (SIZEINA: Int, SIZEINB:Int) extends Component {

@@ -1,9 +1,8 @@
-package EasonLib.Arithmetic
+package EasonLib.Arithmetic.multiplier
 
 import EasonLib.DesignCompiler.{DesignCompilerFlow, DesignCompiler_config}
 import spinal.core._
 import spinal.core.sim._
-import spinal.lib._
 
 import scala.language.postfixOps
 
@@ -101,7 +100,7 @@ class booth4 (SIZEINA: Int, SIZEINB:Int) extends Component {
     shiftReg := aftershift
   }
 
-  io.dout_vld := cal_en.fall
+  io.dout_vld := cal_en.fall(initAt = False)
   io.dout := shiftReg(SIZEINA+SIZEINB downto 1).asSInt
 
   //  io.dout := io.dinA * io.dinB

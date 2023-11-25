@@ -1,4 +1,4 @@
-package EasonLib.Arithmetic
+package EasonLib.Arithmetic.multiplier
 
 import EasonLib.DesignCompiler.{DesignCompilerFlow, DesignCompiler_config}
 import spinal.core._

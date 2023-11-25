@@ -1,6 +1,6 @@
 package EasonLib.mini_riscv.alu
 
-import EasonLib.Arithmetic.{SignMultiplier, booth4}
+import EasonLib.Arithmetic.multiplier.{SignMultiplier, booth4}
 import spinal.sim._
 import spinal.core._
 import spinal.core.sim._
