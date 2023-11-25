@@ -1,6 +1,6 @@
 package EasonLib.mini_riscv.alu
 
-import EasonLib.Arithmetic.restoring_div_unsigned
+import EasonLib.Arithmetic.divider.restoring_div_unsigned
 import spinal.sim._
 import spinal.core._
 import spinal.core.sim._

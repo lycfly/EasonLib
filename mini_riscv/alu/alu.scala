@@ -1,6 +1,7 @@
 package EasonLib.mini_riscv.alu
 
-import EasonLib.Arithmetic.{barrel_shift, logic_unit, restoring_div}
+import EasonLib.Arithmetic.divider.restoring_div
+import EasonLib.Arithmetic.{barrel_shift, logic_unit}
 import EasonLib.Common_ip.{lzc, popcount}
 import EasonLib.mini_riscv.csr.{csr2alu_if, write_csr_if}
 import EasonLib.mini_riscv.decode.{ALUOPs, BRANCH_TYPE, dec2alu_if}

@@ -1,10 +1,7 @@
-package EasonLib.Arithmetic
+package EasonLib.Arithmetic.divider
 
-import spinal.sim._
 import spinal.core._
-import spinal.core.sim._
-import spinal.lib._
-import scala.util.Random
+
 import scala.language.postfixOps
 
 class restoring_div_unsigned(SIZEINA: Int, SIZEINB: Int) extends Component {
