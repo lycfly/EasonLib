@@ -1,10 +1,7 @@
-package EasonLib.Arithmetic
+package EasonLib.Arithmetic.multiplier
 
-import spinal.sim._
 import spinal.core._
-import spinal.core.sim._
-import spinal.lib._
-import scala.util.Random
+
 import scala.language.postfixOps
 
 class booth_signed(SIZEINA: Int=8, SIZEINB:Int=8, RADIX: Int = 4) extends Component {
